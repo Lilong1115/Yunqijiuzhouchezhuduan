@@ -72,6 +72,7 @@
         
     }];
     
+    NSLog(@"123");
     
     [self loadExamplePage:self.wkWebView];
 }
