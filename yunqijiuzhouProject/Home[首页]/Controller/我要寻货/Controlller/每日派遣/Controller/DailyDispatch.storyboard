@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ehC-F5-9nj">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--每日派车-->
+        <scene sceneID="e6c-IS-zec">
+            <objects>
+                <tableViewController id="ehC-F5-9nj" customClass="DailyDispatchTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ddL-eE-FR7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="mNR-5W-KYo">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_calendar" translatesAutoresizingMaskIntoConstraints="NO" id="6io-5l-Gm8">
+                                    <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="28" id="OBV-CC-iTl"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="go" translatesAutoresizingMaskIntoConstraints="NO" id="xyO-VA-iII">
+                                    <rect key="frame" x="352" y="10" width="15" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="15" id="Y26-ua-Fbn"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJ8-ow-py5">
+                                    <rect key="frame" x="44" y="11.5" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货运日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0v-Pj-PFX">
+                                    <rect key="frame" x="274" y="11.5" width="70" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="zJ8-ow-py5" firstAttribute="leading" secondItem="6io-5l-Gm8" secondAttribute="trailing" constant="8" id="IoW-6L-WTP"/>
+                                <constraint firstItem="xyO-VA-iII" firstAttribute="leading" secondItem="u0v-Pj-PFX" secondAttribute="trailing" constant="8" id="Ji9-tX-Csc"/>
+                                <constraint firstItem="zJ8-ow-py5" firstAttribute="centerY" secondItem="6io-5l-Gm8" secondAttribute="centerY" id="OC9-TL-dn8"/>
+                                <constraint firstAttribute="trailing" secondItem="xyO-VA-iII" secondAttribute="trailing" constant="8" id="TQt-VF-Rmr"/>
+                                <constraint firstItem="xyO-VA-iII" firstAttribute="top" secondItem="mNR-5W-KYo" secondAttribute="top" constant="10" id="acC-bL-2bi"/>
+                                <constraint firstItem="u0v-Pj-PFX" firstAttribute="centerY" secondItem="zJ8-ow-py5" secondAttribute="centerY" id="e7F-m0-Ama"/>
+                                <constraint firstAttribute="bottom" secondItem="xyO-VA-iII" secondAttribute="bottom" constant="10" id="hcQ-o1-2dI"/>
+                                <constraint firstAttribute="bottom" secondItem="6io-5l-Gm8" secondAttribute="bottom" constant="8" id="i90-zx-Dxt"/>
+                                <constraint firstItem="6io-5l-Gm8" firstAttribute="top" secondItem="mNR-5W-KYo" secondAttribute="top" constant="8" id="rm2-VK-aTu"/>
+                                <constraint firstItem="6io-5l-Gm8" firstAttribute="leading" secondItem="mNR-5W-KYo" secondAttribute="leading" constant="8" id="x1T-UK-cxm"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZnQ-Cy-Apn">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZnQ-Cy-Apn" id="6F8-JB-fpO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ehC-F5-9nj" id="ZSm-PD-ujh"/>
+                            <outlet property="delegate" destination="ehC-F5-9nj" id="jnT-fk-Izi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="每日派车" id="Brb-UT-ZPT">
+                        <barButtonItem key="rightBarButtonItem" title="添加车辆" id="mVQ-ik-JWN"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dateLabel" destination="zJ8-ow-py5" id="ymf-Lc-Anu"/>
+                        <outlet property="dateView" destination="mNR-5W-KYo" id="GEv-64-FfX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8J-9b-jRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="14.842578710644679"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="go" width="19" height="32"/>
+        <image name="icon_calendar" width="48" height="48"/>
+    </resources>
+</document>

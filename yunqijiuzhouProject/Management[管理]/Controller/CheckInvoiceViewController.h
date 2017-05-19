@@ -1,0 +1,19 @@
+//
+//  CheckInvoiceViewController.h
+//  yunqijiuzhouProject
+//
+//  Created by 李龙 on 17/4/21.
+//  Copyright © 2017年 yunqijiuzhou. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CheckInvoiceViewController : UIViewController
+
+//货单URLStr
+@property (nonatomic, copy) NSString *invoiceStr;
+
+//title
+@property (nonatomic, copy) NSString *title;
+
+@end
