@@ -365,7 +365,7 @@
         CLLocationDistance distance2 = MAMetersBetweenMapPoints(minePoint,task2LocationPoint);
         NSLog(@"2: %f", distance2);
         
-        if (distance2 <= 2000) {
+        if (distance2 <= 1000000000000000) {
             
             if (self.isSendLocation2 == NO) {
                 
