@@ -142,7 +142,7 @@ static NSString *kCarInfoCellID = @"kCarInfoCellID";
 
     BOOL judge = [self judge];
     
-    NSLog(@"%d", judge);
+    //NSLog(@"%d", judge);
     
     if (judge == YES) {
         [self addSendInfo];
@@ -152,6 +152,7 @@ static NSString *kCarInfoCellID = @"kCarInfoCellID";
 
 }
 
+//判断条件
 - (BOOL)judge{
 
     __block BOOL judge = YES;

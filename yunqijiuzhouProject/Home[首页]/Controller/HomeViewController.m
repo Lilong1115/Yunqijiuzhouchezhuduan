@@ -6,6 +6,7 @@
 //  Copyright © 2017年 yunqijiuzhou. All rights reserved.
 //
 
+//首页
 #import "HomeViewController.h"
 #import <WebKit/WebKit.h>
 #import "UserInfo.h"
@@ -154,12 +155,9 @@
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Home_URL]]];
     
-    //NSLog(@"%@", Home_URL);
-    //@"http://192.168.100.136:8080/antu/XgoodsCon.con/getList"
-    //@"http://192.168.100.169:8080/antu/MovewebhomeCon.con/index"
-    
 }
 
+#pragma mark --delegate 设置按钮是否隐藏
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
     self.phoneButton.hidden = YES;

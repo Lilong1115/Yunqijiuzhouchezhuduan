@@ -260,7 +260,6 @@
 		5A2A20931EB977920079B1AB /* DriverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverModel.m; sourceTree = "<group>"; };
 		5A2A20951EB98D940079B1AB /* SendCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCarModel.h; sourceTree = "<group>"; };
 		5A2A20961EB98D940079B1AB /* SendCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCarModel.m; sourceTree = "<group>"; };
-		5A2A20991EB9C52A0079B1AB /* NetPortWW.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetPortWW.h; sourceTree = "<group>"; };
 		5A2A209B1EBAC8250079B1AB /* UIButton+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
 		5A2A209C1EBAC8250079B1AB /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		5A2A20A21EBACA1D0079B1AB /* SendCarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCarHeaderView.h; sourceTree = "<group>"; };
@@ -645,7 +644,6 @@
 		FDE153351EAF2AE500E0DA42 /* AddZhdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddZhdViewController.m; sourceTree = "<group>"; };
 		FDE153371EAF638800E0DA42 /* AddXhdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddXhdViewController.h; sourceTree = "<group>"; };
 		FDE153381EAF638800E0DA42 /* AddXhdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddXhdViewController.m; sourceTree = "<group>"; };
-		FDF77D4C1EB041DC00EA80EB /* NetPort136.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetPort136.h; sourceTree = "<group>"; };
 		FDF77DFF1EB20B0C00EA80EB /* CarsInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarsInformationViewController.h; sourceTree = "<group>"; };
 		FDF77E001EB20B0C00EA80EB /* CarsInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarsInformationViewController.m; sourceTree = "<group>"; };
 		FDF77E021EB20B5400EA80EB /* Management.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Management.storyboard; path = "地图/Management.storyboard"; sourceTree = "<group>"; };
@@ -1179,8 +1177,6 @@
 			isa = PBXGroup;
 			children = (
 				FD407DC51E9F575B00A63A39 /* NetPort.h */,
-				5A2A20991EB9C52A0079B1AB /* NetPortWW.h */,
-				FDF77D4C1EB041DC00EA80EB /* NetPort136.h */,
 				FD407DC61E9F575B00A63A39 /* XSJNetworkTool.h */,
 				FD407DC71E9F575B00A63A39 /* XSJNetworkTool.m */,
 			);

@@ -102,15 +102,4 @@
     
 }
 
-//- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-//    
-//    [SVProgressHUD showWithStatus:@"正在加载..."];
-//    
-//}
-//
-//- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-//    
-//    [SVProgressHUD dismiss];
-//}
-
 @end
