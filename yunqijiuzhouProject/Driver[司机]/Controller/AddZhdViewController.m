@@ -67,11 +67,34 @@
     _bridge = [WKWebViewJavascriptBridge bridgeForWebView:self.wkWebView];
     [_bridge setWebViewDelegate:self];
     
+    self.wkWebView.scrollView.bounces = NO;
+    
     //提交按钮返回
     [_bridge registerHandler:@"ReturnCurrenttask" handler:^(id data, WVJBResponseCallback responseCallback) {
         
-        [self.navigationController popViewControllerAnimated:YES];
+//        [SVProgressHUD showWithStatus:@"正在提交..."];
+        NSString *str = (NSString *)data;
+        if ([str isEqualToString:@"true"]) {
+            [LLGHUD showSuccessWithStatus:@"提交成功"];
+            
+//            //创建通知
+//            NSNotification *notification =[NSNotification notificationWithName:ZHDNotification object:nil userInfo:nil];
+//            
+//            //通过通知中心发送通知
+//            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
         
+            [LLGHUD showErrorWithStatus:@"提交失败"];
+        }
+        
+        
+    }];
+    
+    [_bridge registerHandler:@"Circlestart" handler:^(id data, WVJBResponseCallback responseCallback) {
+        
+        [SVProgressHUD showWithStatus:@"正在提交..."];
     }];
     
     [self loadExamplePage:self.wkWebView urlStr:ReadZhdInvoice_URL];

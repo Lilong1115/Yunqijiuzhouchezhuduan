@@ -81,6 +81,10 @@
             [LLGHUD showErrorWithStatus:@"手机号已存在"];
         }
     }];
+    
+    [_bridge registerHandler:@"Circlestart" handler:^(id data, WVJBResponseCallback responseCallback) {
+        [SVProgressHUD showWithStatus:@"正在注册..."];
+    }];
 
     [self loadExamplePage:self.wkWebView];
 }

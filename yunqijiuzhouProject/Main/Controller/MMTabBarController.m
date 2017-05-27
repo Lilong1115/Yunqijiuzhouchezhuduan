@@ -105,7 +105,17 @@
 
     self.selectedIndex = idx;
     
+    if (idx == 2) {
+        
+        if ([[UserInfo account].yglx1 isEqualToString:@"2"]) {
+            [LLGHUD showErrorWithStatus:@"无权限"];
+            self.selectedIndex = 4;
+            self.bottomView.selectedIndex = 4;
+        }
+    }
+    
     if ([UserInfo account] == nil) {
+        
         
         if (idx == 2 || idx == 1 || idx == 3) {
             
@@ -130,6 +140,7 @@
             [self jc_presentViewController:alert presentType:JCPresentTypeFIFO presentCompletion:nil dismissCompletion:nil];
             
         }
+        
     
     }
     

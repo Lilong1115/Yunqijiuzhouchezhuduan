@@ -53,6 +53,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.bridge setWebViewDelegate:nil];
+    [SVProgressHUD dismiss];
 }
 
 - (void)dealloc

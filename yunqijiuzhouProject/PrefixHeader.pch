@@ -38,10 +38,10 @@
 //取uuid
 #define GetUuid [UserInfo account].uuid
 
+//发货单通知
+#define ZHDNotification @"ZHDNotification"
 //选择城市通知
-#define CityNotification @"CityNotification"
-//选择城市通知
-#define OilTypeNotification @"OilTypeNotification"
+#define XHDNotification @"XHDNotification"
 //选择地址通知
 #define AddressNotification @"AddressNotification"
 

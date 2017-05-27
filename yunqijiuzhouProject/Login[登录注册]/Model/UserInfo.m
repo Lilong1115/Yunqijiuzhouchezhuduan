@@ -76,6 +76,10 @@
             
             [LLGHUD showSuccessWithStatus:@"登陆成功"];
             
+        } else if ([result[@"msg"] isEqualToString:@"666"]) {
+        
+            [LLGHUD showErrorWithStatus:@"666"];
+            
         } else {
         
             [LLGHUD showErrorWithStatus:@"手机号或密码错误"];

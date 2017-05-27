@@ -83,7 +83,26 @@
     //距离
     self.locationManager.distanceFilter = 1;
     
+//    //注册通知
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeZhd:) name:ZHDNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeHhd:) name:XHDNotification object:nil];
+    
 }
+
+////装货单
+//- (void)changeZhd:(NSNotification *)noti {
+//
+//    self.isSendLocation1 = YES;
+//    self.isSendLocation2 = YES;
+//    
+//}
+//
+////卸货单
+//- (void)changeHhd:(NSNotification *)noti {
+//
+//    self.isLocation1 = YES;
+//    self.isLocation2 = YES;
+//}
 
 //切换任务
 - (IBAction)clickSegment:(UISegmentedControl *)sender {
@@ -99,6 +118,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+    
+    
+- (void)viewDidAppear:(BOOL)animated {
+
+    [super viewDidAppear:animated];
+    
+    [self loadExamplePage:self.wkWebView urlStr:DriverNow_URL];
 }
 
 // viewWillAppear和viewWillDisappear对setWebViewDelegate处理，不处理会导致内存泄漏
@@ -120,9 +147,10 @@
             self.location2Dict = array.lastObject;
             
             [self setLoction];
-            
         }];
     }
+    
+    [self setLoction];
     
     //开启定位
     [self.locationManager startUpdatingLocation];
@@ -138,14 +166,15 @@
     [self.locationManager stopUpdatingLocation];
 }
 
-- (void)dealloc
-{
-    NSLog(@"dealloc==dealloc==");
+// 第一界面中dealloc中移除监听的事件
+- (void)dealloc{
+    // 移除当前对象监听的事件
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //设置webview
 - (void)setUpWKWebView {
-    self.wkWebView =  [[WKWebView alloc] initWithFrame:self.view.bounds];
+    self.wkWebView =  [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH - 64)];
     self.wkWebView.navigationDelegate = self;
     self.wkWebView.UIDelegate = self;
     [self.view addSubview:self.wkWebView];
@@ -205,19 +234,7 @@
     [_bridge registerHandler:@"addzhd" handler:^(id data, WVJBResponseCallback responseCallback) {
 
         
-//        NSString *str = (NSString *)data;
-//        /*
-//         hdtjjwd   经纬度；
-//         uuid ：
-//         ygsjh
-//         */
-//        NSString *sendStr = [NSString stringWithFormat:@"%@;hdtjjwd:%@;uuid:%@;ygsjh:%@", str, self.nowLocationStr, GetUuid, [UserInfo account].phone];
-//        
-//        responseCallback(sendStr);
-        
         NSString *orderID = (NSString *)data;
-        
-        NSLog(@"%@", orderID);
         
         AddZhdViewController *zhdVC = [[AddZhdViewController alloc]init];
         
@@ -230,16 +247,6 @@
     //填写卸货单
     [_bridge registerHandler:@"addxhd" handler:^(id data, WVJBResponseCallback responseCallback) {
         
-        
-        NSString *str = (NSString *)data;
-        /*
-         hdtjjwd   经纬度；
-         uuid ：
-         ygsjh
-         */
-        NSString *sendStr = [NSString stringWithFormat:@"%@;hdtjjwd:%@;uuid:%@", str, self.nowLocationStr, GetUuid];
-        
-        responseCallback(sendStr);
         
         NSString *orderID = (NSString *)data;
         
@@ -296,6 +303,7 @@
     NSString *orderManagement = [NSString stringWithFormat:@"%@?uuid=%@&pageSize=0", urlStr, GetUuid];
     
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:orderManagement]]];
+    
 }
 
 
@@ -325,7 +333,9 @@
         
         if (distance1 <= 1000000000000000) {
             
-            if (self.isSendLocation1 == NO) {
+            self.isSendLocation1 = YES;
+            
+            if (self.isSendLocation1 == YES) {
                 
                 NSString *sendStr = [self creatSendStrWithBH:self.location1Dict[@"bh"] coordinate:location.coordinate];
                 
@@ -339,10 +349,12 @@
                 }];
                 
                 
-                self.isSendLocation1 = YES;
+                self.isSendLocation1 = NO;
             }
             
-            if (self.isLocation1 == NO) {
+            self.isLocation1 = YES;
+            
+            if (self.isLocation1 == YES) {
                 
                 NSString *sendStr = [self creatSendStrWithBH:self.location1Dict[@"bh"] coordinate:location.coordinate];
                 
@@ -351,7 +363,7 @@
                     
                 }];
                 
-                self.isLocation1 = YES;
+                self.isLocation1 = NO;
             }
             
         }
@@ -367,7 +379,9 @@
         
         if (distance2 <= 1000000000000000) {
             
-            if (self.isSendLocation2 == NO) {
+            self.isSendLocation2 = YES;
+            
+            if (self.isSendLocation2 == YES) {
                 
                 NSString *sendStr = [self creatSendStrWithBH:self.location2Dict[@"bh"] coordinate:location.coordinate];
                 
@@ -375,15 +389,18 @@
                     
                 }];
                 
-                //我已到达卸货启用
-                [_bridge callHandler:@"updateDischargeState" data:sendStr responseCallback:^(id responseData) {
-                    
-                }];
+//                //我已到达卸货启用
+//                [_bridge callHandler:@"updateDischargeState" data:sendStr responseCallback:^(id responseData) {
+//                    
+//                    
+//                }];
                 
-                self.isSendLocation2 = YES;
+                self.isSendLocation2 = NO;
             }
             
-            if (self.isLocation2 == NO) {
+            self.isLocation2 = YES;
+            
+            if (self.isLocation2 == YES) {
                 
                 NSString *sendStr = [self creatSendStrWithBH:self.location2Dict[@"bh"] coordinate:location.coordinate];
                 
@@ -392,7 +409,7 @@
                     
                 }];
                 
-                self.isLocation2 = YES;
+                self.isLocation2 = NO;
             }
             
         }

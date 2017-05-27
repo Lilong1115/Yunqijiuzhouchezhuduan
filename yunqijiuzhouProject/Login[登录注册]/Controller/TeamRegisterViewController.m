@@ -79,6 +79,10 @@
         }
     }];
     
+    [_bridge registerHandler:@"Circlestart" handler:^(id data, WVJBResponseCallback responseCallback) {
+        [SVProgressHUD showWithStatus:@"正在注册..."];
+    }];
+    
     [self loadExamplePage:self.wkWebView];
 }
 
