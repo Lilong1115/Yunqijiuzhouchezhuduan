@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "UserInfo.h"
+#import "ChangePasswordController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *username;
@@ -82,6 +83,11 @@
         [self.username becomeFirstResponder];
     }
     
+}
+- (IBAction)forgotPassword:(UIButton *)sender {
+    
+    ChangePasswordController *vc = [[ChangePasswordController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //textfield代理方法

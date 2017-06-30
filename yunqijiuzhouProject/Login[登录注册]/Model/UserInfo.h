@@ -35,4 +35,7 @@
 //注销登录，删掉账户
 +(void)logoutAccount;
 
+
++ (void)logout;
+
 @end

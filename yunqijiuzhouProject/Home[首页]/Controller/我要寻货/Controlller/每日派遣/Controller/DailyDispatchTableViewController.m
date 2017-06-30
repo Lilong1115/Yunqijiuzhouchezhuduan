@@ -274,6 +274,11 @@ static NSString *kCarInfoCellID = @"kCarInfoCellID";
 //确认添加
 - (void)addInfo {
     
+    if (self.sendCarList.count == 0) {
+        [LLGHUD showErrorWithStatus:@"添加每日派车"];
+        return;
+    }
+    
     //不得相同日期
     if ([self.dateLabel.text isEqualToString:self.firstDate]) {
         [LLGHUD showErrorWithStatus:@"不得添加同一天货运"];

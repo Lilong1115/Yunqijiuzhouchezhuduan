@@ -84,9 +84,13 @@
             [SVProgressHUD dismissWithCompletion:^{
                 [LLGHUD showSuccessWithStatus:@"添加成功"];
             }];
-        } else {
+        } else if ([str isEqualToString:@"false"]) {
             [SVProgressHUD dismissWithCompletion:^{
                 [LLGHUD showErrorWithStatus:@"添加失败"];
+            }];
+        } else {
+            [SVProgressHUD dismissWithCompletion:^{
+                [LLGHUD showErrorWithStatus:str];
             }];
         }
 

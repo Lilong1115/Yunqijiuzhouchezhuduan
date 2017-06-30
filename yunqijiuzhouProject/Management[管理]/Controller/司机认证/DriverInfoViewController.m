@@ -36,6 +36,7 @@
     [super viewWillAppear:animated];
     if (self.bridge) {
         [self.bridge setWebViewDelegate:self];
+        [self loadExamplePage:self.wkWebView];
     }
 }
 

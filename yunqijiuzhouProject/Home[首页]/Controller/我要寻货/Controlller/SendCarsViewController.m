@@ -173,12 +173,13 @@
                                      };
         
         [[XSJNetworkTool sharedNetworkTool] requestDataWithRequestType:GET andUrlString:SendCarsSubmit_URL andParameters:parameters andSuccessBlock:^(id result) {
-            //NSLog(@"-------------- %@", result);
+            
+            [LLGHUD showSuccessWithStatus:@"派车成功"];
             
             [self.navigationController popViewControllerAnimated:YES];
             
         } andFailBlock:^(NSError *error) {
-            NSLog(@"%@", error);
+            [LLGHUD showErrorWithStatus:@"网络连接错误"];
         }];
 
         

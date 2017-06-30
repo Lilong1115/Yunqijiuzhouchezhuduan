@@ -47,6 +47,7 @@
 		5AE5EE281ECD3C2D00208AB7 /* FreightRevenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5EE271ECD3C2D00208AB7 /* FreightRevenueViewController.m */; };
 		5AE5EE2B1ECD3E1A00208AB7 /* ShippingDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5EE2A1ECD3E1A00208AB7 /* ShippingDetailsViewController.m */; };
 		5AE5EE2E1ECD786F00208AB7 /* RegisterInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5EE2D1ECD786F00208AB7 /* RegisterInfoViewController.m */; };
+		5AEBC7461F048ED000F93818 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEBC7451F048ED000F93818 /* ChangePasswordController.m */; };
 		FD21BE6D1EADCC0D003BB6CA /* CircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD21BE6C1EADCC0D003BB6CA /* CircleViewController.m */; };
 		FD21BE6F1EADCC22003BB6CA /* Circle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD21BE6E1EADCC22003BB6CA /* Circle.storyboard */; };
 		FD21BE781EADF1AA003BB6CA /* AddCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD21BE771EADF1AA003BB6CA /* AddCircleViewController.m */; };
@@ -313,6 +314,8 @@
 		5AE5EE2A1ECD3E1A00208AB7 /* ShippingDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShippingDetailsViewController.m; sourceTree = "<group>"; };
 		5AE5EE2C1ECD786F00208AB7 /* RegisterInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterInfoViewController.h; sourceTree = "<group>"; };
 		5AE5EE2D1ECD786F00208AB7 /* RegisterInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterInfoViewController.m; sourceTree = "<group>"; };
+		5AEBC7441F048ED000F93818 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
+		5AEBC7451F048ED000F93818 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		FD21BE6B1EADCC0D003BB6CA /* CircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleViewController.h; sourceTree = "<group>"; };
 		FD21BE6C1EADCC0D003BB6CA /* CircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleViewController.m; sourceTree = "<group>"; };
 		FD21BE6E1EADCC22003BB6CA /* Circle.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Circle.storyboard; sourceTree = "<group>"; };
@@ -1202,6 +1205,8 @@
 				5A2A20B71EBD94E50079B1AB /* RegisterViewController.m */,
 				5A2A20B91EBD9C280079B1AB /* TeamRegisterViewController.h */,
 				5A2A20BA1EBD9C280079B1AB /* TeamRegisterViewController.m */,
+				5AEBC7441F048ED000F93818 /* ChangePasswordController.h */,
+				5AEBC7451F048ED000F93818 /* ChangePasswordController.m */,
 				FD407DDA1E9F820D00A63A39 /* Login.storyboard */,
 			);
 			path = Controller;
@@ -1923,6 +1928,7 @@
 				FD595F911EA8CF8900050A15 /* OrderViewController.m in Sources */,
 				FD595F861EA8A81900050A15 /* CallPhone.m in Sources */,
 				FD595EE61EA70D4400050A15 /* SDImageCacheConfig.m in Sources */,
+				5AEBC7461F048ED000F93818 /* ChangePasswordController.m in Sources */,
 				FDE153361EAF2AE500E0DA42 /* AddZhdViewController.m in Sources */,
 				FD595EEA1EA70D4400050A15 /* SDWebImageDownloaderOperation.m in Sources */,
 				FD407D471E9F183500A63A39 /* MMNavigationController.m in Sources */,

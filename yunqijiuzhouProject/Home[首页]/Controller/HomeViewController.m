@@ -14,6 +14,7 @@
 #import "SearchView.h"
 #import "CallPhone.h"
 #import "RealTimeInformationViewController.h"
+#import "GoodsTypesViewController.h"
 
 @interface HomeViewController ()<WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate>
 
@@ -96,6 +97,45 @@
     self.wkWebView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadExamplePage:self.wkWebView];
         [self.wkWebView.scrollView.mj_header endRefreshing];
+    }];
+    
+    
+    //货源详情
+    [_bridge registerHandler:@"Jumpxhwith" handler:^(id data, WVJBResponseCallback responseCallback) {
+        
+        if ([UserInfo account]) {
+            
+            NSString *goodsTypesID = (NSString *)data;
+            
+            GoodsTypesViewController *vc = [[GoodsTypesViewController alloc]init];
+            
+            vc.goodsTypesID = goodsTypesID;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        } else {
+            
+            JCAlertController *alert = [JCAlertController alertWithTitle:@"提示" message:@"请先登录" type:JCAlertTypeNormal];
+            
+            [alert addButtonWithTitle:@"取消" type:JCButtonTypeWarning clicked:nil];
+            [alert addButtonWithTitle:@"确定" type:JCButtonTypeWarning clicked:^{
+                
+                // - 获取storyboard文件
+                UIStoryboard *sBoard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+                
+                // - 实例化文件中的初始化控制器[或者根据标记实例化控制器]
+                // 多态,父类的指针指向之类的对象!
+                UIViewController *loginVC = [sBoard instantiateInitialViewController];
+                
+                [self.navigationController pushViewController:loginVC animated:YES];
+            }];
+            
+            [self jc_presentViewController:alert presentType:JCPresentTypeFIFO presentCompletion:nil dismissCompletion:nil];
+            
+            
+        }
+        
+        
     }];
     
     //我要寻货
