@@ -10,7 +10,7 @@
 #define NetPort_h
 
 
-#define Base_URL @"http://192.168.100.141:8080/antu/"
+#define Base_URL @"http://www.yun9zhou.com/"
 
 //www.yun9zhou.com
 //47.93.46.18:8080

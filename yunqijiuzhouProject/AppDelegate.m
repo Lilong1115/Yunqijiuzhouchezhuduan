@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UserInfo.h"
 #import "MMTabBarController.h"
 #import "LoginViewController.h"
 #import "AMapFoundationKit/AMapFoundationKit.h"
@@ -118,11 +119,20 @@
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
     NSDictionary * userInfo = [notification userInfo];
-    NSString *content = [userInfo valueForKey:@"content"];
-    NSDictionary *extras = [userInfo valueForKey:@"extras"];
-    NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
-    
+    NSString *title = [userInfo valueForKey:@"title"];
     NSLog(@"%@", userInfo);
+    NSLog(@"%@", title);
+    
+    if ([title integerValue] == 10000) {
+        NSString *content = [userInfo valueForKey:@"content"];
+        NSLog(@"%@", content);
+        [LLGHUD showErrorWithStatus:content];
+        [UserInfo logout];
+        //        self.window.rootViewController
+        
+        //发送通知,退出登录
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
+    }
     
 }
 

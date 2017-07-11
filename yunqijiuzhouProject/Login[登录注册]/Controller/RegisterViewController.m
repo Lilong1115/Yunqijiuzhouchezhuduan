@@ -64,6 +64,7 @@
         if ([str isEqualToString:@"true"]) {
             [SVProgressHUD dismissWithCompletion:^{
                 [LLGHUD showSuccessWithStatus:@"注册成功"];
+                [self.navigationController popViewControllerAnimated:YES];
             }];
         } else if ([str isEqualToString:@"false"]) {
             [SVProgressHUD dismissWithCompletion:^{
