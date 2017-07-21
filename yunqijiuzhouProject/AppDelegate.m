@@ -113,8 +113,22 @@
     self.window.rootViewController = homeVC;
     
     [self.window makeKeyAndVisible];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(read:) name:@"read" object:nil];
     
     return YES;
+}
+
+- (void)read:(NSNotification *)noti {
+    
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+    label.text = @"您的app已到期限,请续费...";
+    label.backgroundColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.window addSubview:label];
+    
+    self.window.userInteractionEnabled = NO;
+    
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
@@ -185,6 +199,32 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      badge = badge == 1 ? 2 : 1;
      [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
      */
+    
+    
+    [[XSJNetworkTool sharedNetworkTool] requestDataWithRequestType:GET andUrlString:Time_URL andParameters:nil andSuccessBlock:^(id result) {
+        
+        NSDictionary *dict = (NSDictionary *)result;
+        
+        NSInteger ret = [dict[@"ret"] integerValue];
+        
+        if (ret == 1000) {
+            
+        } else {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"read" object:dict[@"msg"]];
+                
+                
+            }];
+        }
+        
+        
+        
+    } andFailBlock:^(NSError *error) {
+        
+    }];
+    
+    
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 

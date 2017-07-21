@@ -125,7 +125,7 @@
 
     [super viewDidAppear:animated];
     
-    [self loadExamplePage:self.wkWebView urlStr:DriverNow_URL];
+    [self.wkWebView.scrollView.mj_header beginRefreshing];
 }
 
 // viewWillAppear和viewWillDisappear对setWebViewDelegate处理，不处理会导致内存泄漏
@@ -205,7 +205,7 @@
         } else {
             [self loadExamplePage:self.wkWebView urlStr:DriverHistory_URL];
         }
-        [self.wkWebView.scrollView.mj_header endRefreshing];
+//        [self.wkWebView.scrollView.mj_header endRefreshing];
     }];
     
     //地理位置
@@ -470,7 +470,15 @@
     
 }
 
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
 
+    [webView.scrollView.mj_header beginRefreshing];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+
+    [webView.scrollView.mj_header endRefreshing];
+}
 
 /*
   orderTasks 任务经纬度

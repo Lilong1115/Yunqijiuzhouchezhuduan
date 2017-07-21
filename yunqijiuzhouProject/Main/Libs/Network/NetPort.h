@@ -10,16 +10,20 @@
 #define NetPort_h
 
 
-#define Base_URL @"http://www.yun9zhou.com/"
+#define Base_URL @"http://www.yun9zhou.com/" 
+//#define Base_URL @"http://192.168.100.202:8080/antu/"
 
 //www.yun9zhou.com
 //47.93.46.18:8080
 
 //222.35.27.155:8888
 //192.168.100.232:8080
-//192.168.100.141:8080/antu
+//192.168.100.144:8080/antu
 //头像路径 -- http://222.35.27.155:8888 图片基础url
 #define PhotoBase_URL @"http://www.yun9zhou.com"
+
+//时间
+#define Time_URL [NSString stringWithFormat:@"%@ReadFromFile.con/ReadUrl", Base_URL]
 
 //获取验证码
 #define GetCode_URL [NSString stringWithFormat:@"%@androidModifyMm.con/getRandom", Base_URL]
@@ -54,7 +58,9 @@
 #define OilType_URL [NSString stringWithFormat:@"%@XgoodsCon.con/hwlx", Base_URL]
 
 //登录
-#define Login_URL [NSString stringWithFormat:@"%@IOSlogin.con/login", Base_URL]
+#define Login_URL [NSString stringWithFormat:@"%@login.con/login", Base_URL]
+//退出登录
+#define Quit_URL [NSString stringWithFormat:@"%@quit.con/quit", Base_URL]
 
 
 //修改照片

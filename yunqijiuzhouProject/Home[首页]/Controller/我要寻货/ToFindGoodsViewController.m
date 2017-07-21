@@ -68,6 +68,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.bridge setWebViewDelegate:nil];
+    [SVProgressHUD dismiss];
 }
 
 - (void)dealloc
@@ -111,6 +112,17 @@
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:ToFindGoods_URL]]];
     
     //@"http://192.168.100.169:8080/antu/MovewebhomeCon.con/index"
+    
+}
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+
+    [SVProgressHUD showWithStatus:@"正在加载..."];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+
+    [SVProgressHUD dismiss];
     
 }
 

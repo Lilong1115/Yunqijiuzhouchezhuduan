@@ -19,6 +19,9 @@
 //运输总量
 @property (nonatomic, weak) UILabel *transportationLabel;
 
+//是否含税
+@property (nonatomic, weak) UIButton *selectButton;
+
 @end
 
 @implementation SendCarHeaderView
@@ -27,6 +30,7 @@
 
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
+        self.hanshui = @"0";
         [self setupUI];
     }
     
@@ -60,8 +64,27 @@
     [self addSubview:unit];
     
     UIView *lineView1 = [[UIView alloc]init];
-    lineView1.backgroundColor = [UIColor blackColor];
+    lineView1.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:lineView1];
+    
+    //是否含税
+    UIButton *selectButton = [[UIButton alloc]init];
+    [selectButton setBackgroundImage:[UIImage imageNamed:@"tick_normal"] forState:UIControlStateNormal];
+    [selectButton setBackgroundImage:[UIImage imageNamed:@"tick_selected"] forState:UIControlStateSelected];
+    [self addSubview:selectButton];
+    [selectButton addTarget:self action:@selector(clickSelectButton) forControlEvents:UIControlEventTouchUpInside];
+    self.selectButton = selectButton;
+    
+    UILabel *hanshui = [self creatLabelWithTitle:@"含税" font:14 color:[UIColor blackColor]];
+    [self addSubview:hanshui];
+    UILabel *neirong = [self creatLabelWithTitle:@"(您所填报的单价为不含税价格,勾选含税请为平台提供11%税点运输发票)" font:12 color:[UIColor redColor]];
+    neirong.numberOfLines = 0;
+    [self addSubview:neirong];
+    
+    UIView *lineView0 = [[UIView alloc]init];
+    lineView0.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:lineView0];
+    
     
     //货物总量
     UILabel *totalGoods = [self creatLabelWithTitle:@"货物总量:" font:14 color:[UIColor blackColor]];
@@ -77,7 +100,7 @@
     [self addSubview:ton];
     
     UIView *lineView2 = [[UIView alloc]init];
-    lineView2.backgroundColor = [UIColor blackColor];
+    lineView2.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:lineView2];
     
     //运输总量
@@ -107,7 +130,7 @@
     [priceText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(priceLabel.mas_trailing).mas_offset(8);
         make.centerY.mas_equalTo(priceLabel);
-        make.width.mas_equalTo(200);
+        make.width.mas_equalTo(180);
     }];
     [unit mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(priceText);
@@ -118,9 +141,30 @@
         make.leading.trailing.mas_equalTo(self);
         make.height.mas_equalTo(1);
     }];
-    [totalGoods mas_makeConstraints:^(MASConstraintMaker *make) {
+    [selectButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(20, 20));
         make.leading.mas_equalTo(self).mas_offset(8);
         make.top.mas_equalTo(lineView1).mas_offset(10);
+    }];
+    [hanshui mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(selectButton);
+        make.leading.mas_equalTo(selectButton.mas_trailing).mas_offset(8);
+    }];
+    [neirong mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(hanshui);
+        make.leading.mas_equalTo(hanshui.mas_trailing).mas_offset(8);
+        make.width.mas_equalTo(250);
+    }];
+    [lineView0 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(selectButton.mas_bottom).mas_offset(10);
+        make.leading.trailing.mas_equalTo(self);
+        make.height.mas_equalTo(1);
+    }];
+    
+    
+    [totalGoods mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(self).mas_offset(8);
+        make.top.mas_equalTo(lineView0).mas_offset(10);
     }];
     [totalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(totalGoods);
@@ -183,7 +227,7 @@
 
     _isOneOrCanOffer = isOneOrCanOffer;
     if ([isOneOrCanOffer isEqualToString:@"0"]) {
-        self.priceLabel.text = @"可报价:";
+        self.priceLabel.text = @"请输入您的报价:";
         self.priceText.userInteractionEnabled = YES;
         self.priceText.placeholder = @"";
     } else {
@@ -209,6 +253,19 @@
     label.textColor = color;
     
     return label;
+}
+
+- (void)clickSelectButton {
+
+    self.selectButton.selected = !self.selectButton.selected;
+}
+
+
+- (NSString *)hanshui {
+
+    NSString *str = [NSString stringWithFormat:@"%d", self.selectButton.selected];
+    
+    return str;
 }
 
 @end

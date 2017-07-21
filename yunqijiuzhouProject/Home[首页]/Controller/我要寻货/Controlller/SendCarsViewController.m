@@ -35,7 +35,7 @@
     //NSLog(@"%@", self.sendCarDict[@"rysjh"]);
  
     //头视图
-    SendCarHeaderView *headerView = [[SendCarHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, 120)];
+    SendCarHeaderView *headerView = [[SendCarHeaderView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, 150)];
     headerView.onePrice = self.sendCarDict[@"ysdj"];
     headerView.isOneOrCanOffer = self.sendCarDict[@"sfyj"];
     headerView.totalGoodsStr = self.sendCarDict[@"hwzl"];
@@ -93,6 +93,8 @@
 
 //提交
 - (void)totask {
+    
+    NSLog(@"%@", self.headerView.hanshui);
     
     
     JCAlertController *alert = [JCAlertController alertWithTitle:@"提示" message:@"确认提交?" type:JCAlertTypeNormal];
@@ -159,6 +161,7 @@
                               GetUuid,@"yhbh",
                               self.sendCarDict[@"sfyj"],@"sfyj",
                               dj,@"dj",
+                              self.headerView.hanshui,@"sfhs",
                               nil];
         
         
@@ -172,6 +175,7 @@
                                      @"jsonStr": json
                                      };
         
+
         [[XSJNetworkTool sharedNetworkTool] requestDataWithRequestType:GET andUrlString:SendCarsSubmit_URL andParameters:parameters andSuccessBlock:^(id result) {
             
             [LLGHUD showSuccessWithStatus:@"派车成功"];
@@ -244,7 +248,7 @@
 
     if (_carInfoView == nil) {
         
-        _carInfoView = [[CarInfoTableView alloc]initWithFrame:CGRectMake(0, 120, ScreenW, ScreenH - 120 - 50 - 64) style:UITableViewStylePlain];
+        _carInfoView = [[CarInfoTableView alloc]initWithFrame:CGRectMake(0, 150, ScreenW, ScreenH - 150 - 50 - 64) style:UITableViewStylePlain];
         
         __weak SendCarsViewController *weakSelf = self;
         _carInfoView.deleteDataBlock = ^(){

@@ -89,7 +89,7 @@
         
         //NSLog(@"%@", error);
         
-        [LLGHUD showErrorWithStatus:@"手机号或密码错误"];
+        [LLGHUD showErrorWithStatus:@"网络请求错误"];
     }];
     
 }
@@ -123,13 +123,50 @@
 //销毁账户
 +(void)logoutAccount
 {
-    NSFileManager *fileManeger=[NSFileManager defaultManager];
-    if ([fileManeger isDeletableFileAtPath:BABarAccountFile]) {
-        [fileManeger removeItemAtPath:BABarAccountFile error:nil];
-        //[MBProgressHUD showSuccess:@"注销成功"];
+    
+    NSString *token = GetJPushToken;
+    
+    NSDictionary *parameters = @{
+                                 @"phone":[UserInfo account].phone,
+                                 @"token":token
+                                 };
+    
+    NSString *json = [NSString ObjectTojsonString:parameters];
+    
+    //NSLog(@"%@", json);
+    
+    NSString *jsonBase64 = [NSString jsonBase64WithJson:json];
+    
+    NSDictionary *dict = @{@"basic": jsonBase64};
+    
+    //NSLog(@"%@", jsonBase64);
+    
+    [[XSJNetworkTool sharedNetworkTool] requestDataWithRequestType:POST andUrlString:Quit_URL andParameters:dict andSuccessBlock:^(id result) {
+
+        NSLog(@"%@", result[@"msg"]);
         
-        [LLGHUD showSuccessWithStatus:@"退出成功"];
-    }    
+        if ([result[@"msg"] isEqualToString:@"成功"]) {
+
+            NSFileManager *fileManeger=[NSFileManager defaultManager];
+            if ([fileManeger isDeletableFileAtPath:BABarAccountFile]) {
+                [fileManeger removeItemAtPath:BABarAccountFile error:nil];
+                //[MBProgressHUD showSuccess:@"注销成功"];
+                
+            }
+            
+            [LLGHUD showSuccessWithStatus:@"退出成功"];
+            
+        } else {
+            
+            [LLGHUD showErrorWithStatus:@"退出失败"];
+        }
+        
+    } andFailBlock:^(NSError *error) {
+        
+        
+    }];
+    
+    
 }
 
 + (void)logout {

@@ -55,7 +55,7 @@ static NSString *kCarInfoCellID = @"kCarInfoCell";
         }];
     }];
     
-    self.totalTransportationStr = [NSString stringWithFormat:@"%f", total];
+    self.totalTransportationStr = [NSString stringWithFormat:@"%.2f", total];
     
     return self.dataList.count;
 }

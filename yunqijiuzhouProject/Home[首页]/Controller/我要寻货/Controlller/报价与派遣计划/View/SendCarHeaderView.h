@@ -26,4 +26,7 @@
 //运输总量
 @property (nonatomic, copy) NSString *totalTransportationStr;
 
+//是否含税
+@property (nonatomic, copy) NSString *hanshui;
+
 @end
