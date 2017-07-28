@@ -470,15 +470,7 @@
     
 }
 
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-
-    [webView.scrollView.mj_header beginRefreshing];
-}
-
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-
-    [webView.scrollView.mj_header endRefreshing];
-}
+LoadWebViewHUD
 
 /*
   orderTasks 任务经纬度

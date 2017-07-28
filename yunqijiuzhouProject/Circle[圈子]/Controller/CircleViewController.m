@@ -159,7 +159,7 @@
         
         [self loadExamplePage:self.wkWebView urlStr:Circle_URL];
         
-        [self.wkWebView.scrollView.mj_header endRefreshing];
+//        [self.wkWebView.scrollView.mj_header endRefreshing];
     }];
     
     [WKWebViewJavascriptBridge enableLogging];
@@ -209,7 +209,7 @@
 
 
 
-
+LoadWebViewHUD
 
 /*
  messageComment 输入评论

@@ -106,7 +106,7 @@
         }
         
         
-        [self.wkWebView.scrollView.mj_header endRefreshing];
+//        [self.wkWebView.scrollView.mj_header endRefreshing];
     }];
     
     // 注册一下
@@ -260,7 +260,7 @@
 }
 
 
-
+LoadWebViewHUD
 
 //- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
 //    

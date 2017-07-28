@@ -112,7 +112,7 @@
     
     self.wkWebView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self loadExamplePage:self.wkWebView];
-        [self.wkWebView.scrollView.mj_header endRefreshing];
+//        [self.wkWebView.scrollView.mj_header endRefreshing];
     }];
     
     __weak __typeof(self)weakSelf = self;
@@ -150,7 +150,7 @@
     
 }
 
-
+LoadWebViewHUD
 
 /*
   carPosition 定位
